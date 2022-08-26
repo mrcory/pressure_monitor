@@ -29,3 +29,6 @@ const char* password = "";
 
 //Device Settings
 #define myName "Pressure Monitor"
+
+//Enable Serial Outpur
+#define enableSerial

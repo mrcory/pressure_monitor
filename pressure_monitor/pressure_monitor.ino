@@ -25,7 +25,9 @@ HAMqtt mqtt(wifi,device);
 HASensor pres("Pressure");
 
 void setup() {
-  Serial.begin(115200);
+  #ifdef enableSerial
+    Serial.begin(115200);
+  #endif
   
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
@@ -83,9 +85,11 @@ void loop() {
   }
 
   if (timer(3000,1)) {
-    Serial.print("Converted: ");  Serial.print(getPressure());
-    Serial.print(" | Raw : ");    Serial.println(averagePressure());
-
+    #ifdef enableSerial
+      Serial.print("Converted: ");  Serial.print(getPressure());
+      Serial.print(" | Raw : ");    Serial.println(averagePressure());
+    #endif
+    
     pres.setValue(getPressure());
   }
   
