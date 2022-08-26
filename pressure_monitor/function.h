@@ -37,5 +37,8 @@ int getPressure () {
 
   _value = map(averagePressure(), pressureMinVal, pressureMaxVal, pressureMinPSI, pressureMaxPSI);
 
+  if (_value < minimumThreshold) { _value = 0;} //If not above minimum threshold return 0
+  if (_value < 0) { _value = 0;}                //If negative, make it 0
+  
   return _value;
 }
